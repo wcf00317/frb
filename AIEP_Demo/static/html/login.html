@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}<h1 class="my-con1"><!Login Page></h1>{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+    <div class="container d-flex flex-column justify-content-between vh-100">
+        <div class="row justify-content-center mt-5">
+            <div class="col-xl-5 col-lg-6 col-md-10">
+                <div class="card">
+                    <div class="card-header bg-primary">
+                        <div class="app-brand">
+                            <a href="/index.html">
+                              <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30" height="33" viewBox="0 0 30 33">
+                                <g fill="none" fill-rule="evenodd">
+                                  <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z"></path>
+                                  <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z"></path>
+                                </g>
+                              </svg>
+                              <span class="brand-name">AIEP Dashboard</span>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="card-body p-5">
+                        {% if message %}
+                            <div class="form-group col-md-12">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>{{message}}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            </div>
+                        {% endif %}
+                        {% if tips %}
+                            <div class="form-group col-md-12">
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <strong>{{tips}}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="form-group">
+
+
+                            <form method="post" action="" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    {% if field.label == 'password'%}
+                                        <div class="form-group col-md-12 ">
+                                            {{field}}
+                                        </div>
+                                    {% else %}
+                                        <div class="form-group col-md-12 mb-4">
+                                            {{field}}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                <button type="submit" class="btn btn-lg btn-primary btn-block mb-4">Login</button>
+                            </form>
+
+                            <p>Don't have an account yet ?
+                                <a class="text-blue" href="/privileges/register">Sign Up</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

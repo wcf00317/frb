@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block mainbody %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+      {% block title %}
+          <title>base</title>
+      {% endblock %}
+
+      {% block css %}
+      {% endblock %}
+  </head>
+  <body>
+
+
+        {% block content %}
+        {% endblock %}
+
+        <!-- 新增代码 -->
+        {% block script %}{% endblock script %}
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,86 @@
+
+{% extends "index.html" %}
+{% block mainbody %}
+{% load static %}
+<div class="card card-default">
+	<div class="card-header card-header-border-bottom">
+		<h2>提交任务</h2>
+	</div>
+
+	<div class="card-body">
+		<form action="." method="post" enctype="multipart/form-data">
+			<!-- {% csrf_token %}
+			<table>
+			{% for field in form %}
+				<tr>
+					<td>{{ field.label_tag }}</td>
+					<td>{{ field }}</td>
+					<td>{{ field.errors }}</td>
+				</tr>
+			{% endfor %}
+			</table> -->
+			<div class="form-group">
+				<label for="title">项目名称：</label>
+				<input type="text" class="form-control" placeholder="Name for the job,need to be unique.Value must match the pattern ^[A-Za-z0-9-._]+$" name="title" id="'title" required="required">
+			</div>
+			<div class="form-group">
+				<label>项目简介：</label>
+				<textarea class="form-control" placeholder="请输入对项目的简单描述" rows="5" name="description" id="description" required="required"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="dataset">选择数据集</label>
+				<select class="form-control" name="dataset" required="required" id="dataset">
+					<option value="cifar-10">cifar-10</option>
+					<option value="ImageNet">ImageNet</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>选择攻击方法</label>
+				{% for attack_method in attack_methods %}
+        			<input value="{{ attack_method.id }}" type="checkbox" name="attack_method"/>{{ attack_method.name }}
+      				</label>
+    			{% endfor %}
+				<!-- <select class="form-control" name="attack_method">
+					<option value="FGSM">FGSM</option>
+					<option value="PGD">PGD</option>
+				</select> -->
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlSelect12">评测指标</label>
+				<select class="form-control" name="evaluate_method">
+					<option value="ACC">ACC</option>
+					<option value="ACTC">ACTC</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlFile1">上传模型文件</label>
+				<input type="file" class="form-control-file" name="model" id="model" placeholder="The name of your file should have the same name of your model" required="required">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlFile2">上传数据文件</label>
+				<input type="file" class="form-control-file" name="model_data" id="model_data" placeholder="The name of your file should have the same name of your model" required="required">
+			</div>
+			<div class="form-footer pt-4 pt-5 mt-4 border-top">
+				<button type="submit" class="btn btn-primary btn-default" name="submit_btn" onclick="submit_query()">Submit</button>
+				<!--button type="submit" class="btn btn-primary">完成</button-->
+			</div>
+		</form>
+
+	</div>
+</div>
+<script>
+function submit_query(btn){
+	var get_percent = setInterval(function(){
+		var status_url = "/management/waiting/show_status";
+		$.getJSON(status_url, function(res){
+			$("#prog_in").width(res + '%');
+		});
+	}, 1000);
+	var waiting_url = "/management/waiting"
+	$.getJSON(waiting_url, function(res){
+		clearInterval(get_percent);
+		$("#prog_out").attr("class", "progress progress-bar-success");
+	});
+}
+</script>
+{% endblock %}
