@@ -27,6 +27,7 @@ import notifications.urls
 
 urlpatterns = [
     url(r'^$', manage_view.welcome),
+    url(r'^3dModel/',manage_view.threeDModel),
     url(r'^admin/', admin.site.urls),
     url(r'^management/', include('management.urls')),
     url(r'captcha', include('captcha.urls')),

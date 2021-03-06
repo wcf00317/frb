@@ -29,6 +29,8 @@ from django.views import View
 def welcome(request):
     return render(request, 'welcome.html')
 
+def threeDModel(request):
+    return render(request,'3dModel.html')
 
 def page_not_found(request, exception):
     return render(request, '404.html')
