@@ -86,13 +86,13 @@
 
         THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
         new THREE.MTLLoader()
-            .setPath('assets/')
+            .setPath('/static/assets/')
             .load('test.mtl', function (materials)
             {
             materials.preload();
             new THREE.OBJLoader()
                 .setMaterials(materials)
-                .setPath('assets/')
+                .setPath('/static/assets/')
                 .load('test.obj', function (object)
                 {
                 object.position.y = -95;

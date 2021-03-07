@@ -48,8 +48,8 @@ newmtl Material__8
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka C:\Users\Administrator\Desktop\b.jpg
-	map_Kd C:\Users\Administrator\Desktop\b.jpg
+	map_Ka b.jpg
+	map_Kd b.jpg
 
 newmtl Material__35
 	Ns 10.0000
@@ -62,8 +62,8 @@ newmtl Material__35
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka C:\Users\Administrator\Desktop\b.jpg
-	map_Kd C:\Users\Administrator\Desktop\b.jpg
+	map_Ka b.jpg
+	map_Kd b.jpg
 
 newmtl Material__9
 	Ns 10.0000
@@ -76,8 +76,8 @@ newmtl Material__9
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka C:\Users\Administrator\Desktop\b.jpg
-	map_Kd C:\Users\Administrator\Desktop\b.jpg
+	map_Ka b.jpg
+	map_Kd b.jpg
 
 newmtl M_LicensePlate
 	Ns 43.2193
